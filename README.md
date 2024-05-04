@@ -1,8 +1,12 @@
 # Security Lite
 
 > 轻量级接口拦截权限校验
->
-> springboot.version = 2.x
+
+```xml
+<properties>
+    <springboot.version>2.7.18</springboot.version>
+</properties>
+```
 
 ```xml
 <dependency>
