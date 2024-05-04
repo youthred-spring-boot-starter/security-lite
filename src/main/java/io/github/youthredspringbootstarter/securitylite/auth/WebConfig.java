@@ -19,8 +19,8 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        if (CollectionUtils.isEmpty(securityProp.getStaticResource())) {
-            securityProp.getStaticResource().forEach((handler, locations) -> registry.addResourceHandler(handler).addResourceLocations(locations));
+        if (!CollectionUtils.isEmpty(securityProp.getStaticResources())) {
+            securityProp.getStaticResources().forEach((handler, locations) -> registry.addResourceHandler(handler).addResourceLocations(locations));
         }
     }
 

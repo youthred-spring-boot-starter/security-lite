@@ -11,7 +11,7 @@ public class SecurityProp {
 
     private boolean enable;
 
-    private Map<String, String[]> staticResource;
+    private Map<String, String[]> staticResources;
 
     public boolean isEnable() {
         return enable;
@@ -22,12 +22,12 @@ public class SecurityProp {
         return this;
     }
 
-    public Map<String, String[]> getStaticResource() {
-        return staticResource;
+    public Map<String, String[]> getStaticResources() {
+        return staticResources;
     }
 
-    public SecurityProp setStaticResource(Map<String, String[]> staticResource) {
-        this.staticResource = staticResource;
+    public SecurityProp setStaticResources(Map<String, String[]> staticResources) {
+        this.staticResources = staticResources;
         return this;
     }
 }
