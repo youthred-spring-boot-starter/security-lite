@@ -57,3 +57,4 @@ security:
         List<SecurityServlet> interceptions();
     }
     ```
+  除此之外的全部拦截
