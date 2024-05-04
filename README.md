@@ -4,6 +4,7 @@
 
 ```xml
 <properties>
+    <!-- 2.x only -->
     <springboot.version>2.7.18</springboot.version>
 </properties>
 ```
