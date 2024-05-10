@@ -4,7 +4,7 @@ import io.github.youthredspringbootstarter.securitylite.o.SecurityServlet;
 
 import java.util.List;
 
-public interface SecurityInterceptor {
+public interface SecurityService {
 
     /**
      * 直接放行的接口，不需要填写roles

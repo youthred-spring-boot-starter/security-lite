@@ -1,6 +1,6 @@
 package io.github.youthredspringbootstarter.securitylite.auth;
 
-import io.github.youthredspringbootstarter.securitylite.i.SecurityInterceptor;
+import io.github.youthredspringbootstarter.securitylite.i.SecurityService;
 import io.github.youthredspringbootstarter.securitylite.o.SecurityServlet;
 import io.github.youthredspringbootstarter.securitylite.prop.SecurityProp;
 import org.springframework.util.AntPathMatcher;
@@ -16,9 +16,9 @@ public class AuthInterceptor implements HandlerInterceptor {
     private final static PathMatcher PATH_MATCHER = new AntPathMatcher();
 
     private final SecurityProp securityProp;
-    private final SecurityInterceptor securityInterceptor;
+    private final SecurityService securityInterceptor;
 
-    public AuthInterceptor(SecurityProp securityProp, SecurityInterceptor securityInterceptor) {
+    public AuthInterceptor(SecurityProp securityProp, SecurityService securityInterceptor) {
         this.securityProp = securityProp;
         this.securityInterceptor = securityInterceptor;
     }

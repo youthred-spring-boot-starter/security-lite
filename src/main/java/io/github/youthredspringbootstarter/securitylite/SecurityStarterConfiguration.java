@@ -1,8 +1,8 @@
 package io.github.youthredspringbootstarter.securitylite;
 
 import io.github.youthredspringbootstarter.securitylite.auth.WebConfig;
-import io.github.youthredspringbootstarter.securitylite.i.DefaultSecurityInterceptor;
-import io.github.youthredspringbootstarter.securitylite.i.SecurityInterceptor;
+import io.github.youthredspringbootstarter.securitylite.i.DefaultSecurityService;
+import io.github.youthredspringbootstarter.securitylite.i.SecurityService;
 import io.github.youthredspringbootstarter.securitylite.prop.SecurityProp;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -16,13 +16,13 @@ import org.springframework.context.annotation.Configuration;
 public class SecurityStarterConfiguration {
 
     @Bean
-    public WebConfig webConfig(SecurityProp securityProp, SecurityInterceptor securityInterceptor) {
+    public WebConfig webConfig(SecurityProp securityProp, SecurityService securityInterceptor) {
         return new WebConfig(securityProp, securityInterceptor);
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public SecurityInterceptor securityInterceptor() {
-        return new DefaultSecurityInterceptor();
+    public SecurityService securityService() {
+        return new DefaultSecurityService();
     }
 }

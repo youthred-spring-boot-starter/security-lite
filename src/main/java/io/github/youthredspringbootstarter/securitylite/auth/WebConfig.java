@@ -1,6 +1,6 @@
 package io.github.youthredspringbootstarter.securitylite.auth;
 
-import io.github.youthredspringbootstarter.securitylite.i.SecurityInterceptor;
+import io.github.youthredspringbootstarter.securitylite.i.SecurityService;
 import io.github.youthredspringbootstarter.securitylite.prop.SecurityProp;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -10,9 +10,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig implements WebMvcConfigurer {
 
     private final SecurityProp securityProp;
-    private final SecurityInterceptor securityInterceptor;
+    private final SecurityService securityInterceptor;
 
-    public WebConfig(SecurityProp securityProp, SecurityInterceptor securityInterceptor) {
+    public WebConfig(SecurityProp securityProp, SecurityService securityInterceptor) {
         this.securityProp = securityProp;
         this.securityInterceptor = securityInterceptor;
     }

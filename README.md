@@ -30,14 +30,14 @@ security:
       - "file:D:/tmp/"
 ```
 
-- `security.enable` 是否开启
+- `security.enable` 是否启用
 - `security.static-resources` 静态资源键值对 K:Handler V:Locations
 
 配置完成这两项便可支持静态资源访问
 
 ### 接口权限配置
 
-- 实现 `io.github.youthredspringbootstarter.securitylite.i.SecurityInterceptor`
+- 实现 `io.github.youthredspringbootstarter.securitylite.i.SecurityService`
 
     ```java
     public interface SecurityInterceptor {

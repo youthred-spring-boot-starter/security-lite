@@ -5,7 +5,7 @@ import io.github.youthredspringbootstarter.securitylite.o.SecurityServlet;
 import java.util.Collections;
 import java.util.List;
 
-public class DefaultSecurityInterceptor implements SecurityInterceptor {
+public class DefaultSecurityService implements SecurityService {
 
     @Override
     public List<SecurityServlet> releases() {
