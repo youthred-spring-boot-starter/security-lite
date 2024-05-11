@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.function.RouterFunction;
 import org.springframework.web.servlet.function.RouterFunctions;
+import org.springframework.web.servlet.function.ServerRequest;
 import org.springframework.web.servlet.function.ServerResponse;
 
 @Configuration
@@ -22,17 +23,18 @@ public class LoginRouterConfig {
     public LoginService loginService() {
         return new LoginService() {
             @Override
-            public String verify(Login login) {
-                return "";
+            public String verify(ServerRequest request) throws Exception {
+                Login login = request.body(Login.class);
+                System.out.println(login);
+                return "NONE_TOKEN";
             }
         };
     }
 
     @Bean
-    public RouterFunction<ServerResponse> loginRouterFunction(LoginService loginService) {
+    public <T> RouterFunction<ServerResponse> loginRouterFunction(LoginService loginService) {
         return RouterFunctions.route().POST("/login", request -> {
-            Login login = request.body(Login.class);
-            String token = loginService.verify(login);
+            String token = loginService.verify(request);
             return ServerResponse.ok().body(token);
         }).build();
     }

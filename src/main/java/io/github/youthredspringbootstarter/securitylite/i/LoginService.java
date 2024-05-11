@@ -1,14 +1,14 @@
 package io.github.youthredspringbootstarter.securitylite.i;
 
-import io.github.youthredspringbootstarter.securitylite.o.Login;
+import org.springframework.web.servlet.function.ServerRequest;
 
 public interface LoginService {
 
     /**
      * 登录校验
      *
-     * @param login 登录参数
+     * @param request 登录请求
      * @return TOKEN
      */
-    String verify(Login login);
+    String verify(ServerRequest request) throws Exception;
 }
