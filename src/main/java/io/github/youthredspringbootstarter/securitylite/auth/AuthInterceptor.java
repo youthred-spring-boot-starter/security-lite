@@ -1,5 +1,6 @@
 package io.github.youthredspringbootstarter.securitylite.auth;
 
+import io.github.youthredspringbootstarter.securitylite.i.LoginService;
 import io.github.youthredspringbootstarter.securitylite.i.SecurityService;
 import io.github.youthredspringbootstarter.securitylite.o.SecurityServlet;
 import io.github.youthredspringbootstarter.securitylite.prop.SecurityProp;
@@ -16,11 +17,13 @@ public class AuthInterceptor implements HandlerInterceptor {
     private final static PathMatcher PATH_MATCHER = new AntPathMatcher();
 
     private final SecurityProp securityProp;
-    private final SecurityService securityInterceptor;
+    private final SecurityService securityService;
+    private final LoginService loginService;
 
-    public AuthInterceptor(SecurityProp securityProp, SecurityService securityInterceptor) {
+    public AuthInterceptor(SecurityProp securityProp, SecurityService securityService, LoginService loginService) {
         this.securityProp = securityProp;
-        this.securityInterceptor = securityInterceptor;
+        this.securityService = securityService;
+        this.loginService = loginService;
     }
 
     @Override
@@ -28,12 +31,12 @@ public class AuthInterceptor implements HandlerInterceptor {
         if (!securityProp.isEnable()) {
             return true;
         }
-        if (CollectionUtils.isEmpty(securityInterceptor.interceptions())) {
+        if (CollectionUtils.isEmpty(securityService.interceptions())) {
             return true;
         }
         String servletMethod = request.getMethod();
         String servletPath = request.getServletPath();
-        for (SecurityServlet ss : securityInterceptor.interceptions()) {
+        for (SecurityServlet ss : securityService.interceptions()) {
             if (PATH_MATCHER.match(servletPath, ss.getPath()) && ss.getMethod().name().equals(servletMethod)) {
                 // todo 角色权限验证
                 return true;
