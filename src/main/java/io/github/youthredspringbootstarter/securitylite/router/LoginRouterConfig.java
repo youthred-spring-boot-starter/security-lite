@@ -2,6 +2,7 @@ package io.github.youthredspringbootstarter.securitylite.router;
 
 import io.github.youthredspringbootstarter.securitylite.i.LoginService;
 import io.github.youthredspringbootstarter.securitylite.o.Login;
+import io.github.youthredspringbootstarter.securitylite.o.SecurityServlet;
 import io.github.youthredspringbootstarter.securitylite.prop.LoginProp;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
@@ -10,6 +11,8 @@ import org.springframework.web.servlet.function.RouterFunction;
 import org.springframework.web.servlet.function.RouterFunctions;
 import org.springframework.web.servlet.function.ServerRequest;
 import org.springframework.web.servlet.function.ServerResponse;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Component
 public class LoginRouterConfig {
@@ -23,6 +26,11 @@ public class LoginRouterConfig {
                 Login login = request.body(Login.class);
                 System.out.println(login);
                 return "NONE_TOKEN";
+            }
+
+            @Override
+            public boolean verity(SecurityServlet securityServlet, String token, HttpServletRequest request) throws Exception {
+                return false;
             }
         };
     }

@@ -2,19 +2,26 @@ package io.github.youthredspringbootstarter.securitylite.o;
 
 import org.springframework.http.HttpMethod;
 
-import java.util.List;
-
 public class SecurityServlet {
 
+    /**
+     * API唯一ID
+     */
+    private String id;
     private HttpMethod method;
     /**
      * 支持RestFul风格
      */
     private String path;
-    /**
-     * 放行的角色
-     */
-    public List<String> roles;
+
+    public String getId() {
+        return id;
+    }
+
+    public SecurityServlet setId(String id) {
+        this.id = id;
+        return this;
+    }
 
     public HttpMethod getMethod() {
         return method;
@@ -31,15 +38,6 @@ public class SecurityServlet {
 
     public SecurityServlet setPath(String path) {
         this.path = path;
-        return this;
-    }
-
-    public List<String> getRoles() {
-        return roles;
-    }
-
-    public SecurityServlet setRoles(List<String> roles) {
-        this.roles = roles;
         return this;
     }
 }

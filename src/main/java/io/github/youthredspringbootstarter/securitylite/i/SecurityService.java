@@ -6,17 +6,17 @@ import java.util.List;
 
 public interface SecurityService {
 
-    /**
-     * 直接放行的接口，不需要填写roles
-     *
-     * @return 放行的接口
-     */
-    List<SecurityServlet> releases();
+//    /**
+//     * 直接放行的API
+//     *
+//     * @return 放行的API
+//     */
+//    List<SecurityServlet> releases();
 
     /**
-     * 需要拦截的接口
+     * 需要拦截的API
      *
-     * @return 需要拦截的接口
+     * @return 需要拦截的API
      */
     List<SecurityServlet> interceptions();
 }

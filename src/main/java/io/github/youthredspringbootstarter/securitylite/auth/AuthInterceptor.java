@@ -39,7 +39,7 @@ public class AuthInterceptor implements HandlerInterceptor {
         for (SecurityServlet ss : securityService.interceptions()) {
             if (PATH_MATCHER.match(servletPath, ss.getPath()) && ss.getMethod().name().equals(servletMethod)) {
                 // todo 角色权限验证
-                return true;
+                return loginService.verity(ss, "", request);
             }
         }
 
