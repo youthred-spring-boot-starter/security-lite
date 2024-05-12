@@ -12,6 +12,7 @@ public interface LoginService {
      *
      * @param request 登录请求
      * @return TOKEN
+     * @throws Exception e
      */
     String sign(ServerRequest request) throws Exception;
 
@@ -21,8 +22,8 @@ public interface LoginService {
      * @param securityServlet 拦截API
      * @param token           登录令牌
      * @param request         Servlet请求对象
-     * @return
-     * @throws Exception
+     * @return 是否放行
+     * @throws Exception e
      */
     boolean verity(SecurityServlet securityServlet, String token, HttpServletRequest request) throws Exception;
 }

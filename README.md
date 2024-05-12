@@ -40,21 +40,33 @@ security:
 - 实现 `io.github.youthredspringbootstarter.securitylite.i.SecurityService`
 
     ```java
-    public interface SecurityInterceptor {
-    
-        /**
-         * 直接放行的接口，不需要填写roles
-         *
-         * @return 放行的接口
-         */
-        List<SecurityServlet> releases();
-    
-        /**
-         * 需要拦截的接口
-         *
-         * @return 需要拦截的接口
-         */
-        List<SecurityServlet> interceptions();
-    }
+    /**
+    * 需要拦截的接口
+    *
+    * @return 需要拦截的接口
+    */
+    List<SecurityServlet> interceptions();
     ```
-  除此之外的全部拦截
+
+- 实现 `io.github.youthredspringbootstarter.securitylite.i.LoginService`
+    ```java
+    /**
+     * 登录校验并颁发令牌
+     *
+     * @param request 登录请求
+     * @return TOKEN
+     * @throws Exception e
+     */
+    String sign(ServerRequest request) throws Exception;
+
+    /**
+     * 当有接口访问被拦截的API时便会调用此方法进行验证
+     *
+     * @param securityServlet 拦截API
+     * @param token           登录令牌
+     * @param request         Servlet请求对象
+     * @return 是否放行
+     * @throws Exception e
+     */
+    boolean verity(SecurityServlet securityServlet, String token, HttpServletRequest request) throws Exception;
+    ```
